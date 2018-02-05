@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y build-essential
 
 CMD [ "node" ]
 
-# Install basic tools/utilities and google Chrome unstable (which has cross platform support for headless mode). Combining theem together so that apt cache cleanup would need to be done just once.
+# Install basic tools/utilities and Google Chrome unstable (which has cross platform support for headless mode). Combining theem together so that apt cache cleanup would need to be done just once.
 RUN apt-get update -y && \
     apt-get install ca-certificates \
       gconf-service \
@@ -56,3 +56,7 @@ RUN apt-get update -y && \
     apt-get install -f && \
     apt-get clean autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* google-chrome-unstable_current_amd64.deb
+
+RUN npm i -g yarn@0.22.0
+RUN npm i -g flow-bin
+RUN yarn install
