@@ -57,6 +57,7 @@ RUN apt-get update -y && \
     apt-get clean autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* google-chrome-unstable_current_amd64.deb
 
+RUN npm install -g npm@5.6.0
 RUN npm i -g yarn@0.22.0
 RUN npm i -g flow-bin
 RUN yarn install
