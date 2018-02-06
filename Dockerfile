@@ -16,7 +16,7 @@ RUN set -ex \
   done
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 6.4.0
+ENV NODE_VERSION 9.5.0
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
@@ -27,7 +27,8 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   
 RUN apt-get update && apt-get install -y build-essential
 
-CMD [ "node" ]
+RUN node -v
+RUN npm -v
 
 # Install basic tools/utilities and Google Chrome unstable (which has cross platform support for headless mode). Combining theem together so that apt cache cleanup would need to be done just once.
 RUN apt-get update -y && \
